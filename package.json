@@ -14,15 +14,31 @@
     "start": "live-server public/",
     "start:solution": "npm run -it docker:build && npm run docker:run",
     "test": "mocha test/*.test.js",
-    "test:solution": "npm run docker:build && npm run docker:test"
+    "test:solution": "npm run docker:build && npm run docker:test",
+    "build": "react-scripts build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.2.0",
-    "colors": "1.4.0",  
+    "colors": "1.4.0",
     "live-server": "1.2.1",
     "mocha": "^8.1.1"
+  },
+  "dependencies": {
+    "react-scripts": "^5.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
