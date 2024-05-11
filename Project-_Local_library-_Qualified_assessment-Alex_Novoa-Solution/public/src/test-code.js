@@ -8303,7 +8303,7 @@ const books = [
     },
   ];
   
-  function getTotalNumberOfBorrows(account, books) {
+  /*function getTotalNumberOfBorrows(account, books) {
     let totalCount = 0;
     books.forEach((book) => {
       const count = book.borrows.filter((borrow) => borrow.id === account).length;
@@ -8313,7 +8313,7 @@ const books = [
     });
     return totalCount;
   }
-  console.log(getTotalNumberOfBorrows("5f446f2e2f35653fa80bf490", books));
+  console.log(getTotalNumberOfBorrows("5f446f2e2f35653fa80bf490", books));*/
 
 /* should return an ARRAY of ten or fewer account objects that represents the accounts given by
 the IDs in the provided book's borrows array.
@@ -8478,3 +8478,21 @@ console.log(getTotalNumberOfBorrows("5f446f2ed46724f41c9fc431", books));
 const mostCommonBorrower = getMostCommonBorrower(books);
 console.log(`The ID '${mostCommonBorrower.id}' shows up the most with ${mostCommonBorrower.count} occurrences.`);
 */
+
+function getMostCommonGenres(books){
+  const genreCounts = books.reduce((count, book) => {
+      const { genre } = book;
+      count[genre] = (count[genre] || 0) + 1;
+      //console.log(count[genre]);
+      return count;
+  }, {});
+  console.log(genreCounts);
+
+  const sortedGenres = Object.keys(genreCounts).map((genre) => 
+  ({name: genre, count: genreCounts[genre] })).sort((a, b) => b.count - a.count);
+
+  return sortedGenres.slice(0,5);
+
+}
+
+console.log(getMostCommonGenres(books));

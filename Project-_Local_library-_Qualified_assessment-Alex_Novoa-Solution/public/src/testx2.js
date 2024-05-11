@@ -257,7 +257,7 @@ const books = [
 
 
 
- function getTotalNumberOfBorrows(account, books) {
+ /*function getTotalNumberOfBorrows(account, books) {
     let totalCount = 0;
     books.forEach((book) => {
       const count = book.borrows.filter((borrow) => borrow.id === account).length;
@@ -276,4 +276,21 @@ const books = [
     return totalBorrows;
   }
 
-  console.log(getTotalNumberOfBorrows("5f446f2ea6b68cf6f85f6e28", books));
+  console.log(getTotalNumberOfBorrows("5f446f2ea6b68cf6f85f6e28", books));*/
+
+  function getMostCommonGenres(books){
+    const genreCounts = books.reduce((count, book) => {
+        const { genre } = book;
+        count[genre] = (count[genre] || 0) + 1;
+        console.log(count);
+        return count;
+    }, {});
+  
+    const sortedGenres = Object.keys(genreCounts).map((genre) => 
+    ({name: genre, count: genreCounts[genre] })).sort((a, b) => b.count - a.count);
+  
+    return sortedGenres.slice(0,5);
+  
+  }
+  console.log(getMostCommonGenres(books));
+
